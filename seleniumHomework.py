@@ -45,12 +45,16 @@ class Test_Sauce:
         loginButton = edgeDriver.find_element(By.ID, "login-button")
         inputUsername.send_keys("standart_user")
         inputPassword.send_keys("secret_sauce")
-        loginButton.click()
-        edgeDriver.get("/inventory.html")
+        sleep(2)
+
+        if inputUsername.text == ("standart_user") and inputPassword.text == ("secret_sauce"):
+            loginButton.click()
+            sleep(2)
+            edgeDriver.get("/inventory.html")
 
 
 test_sauce = Test_Sauce()
-test_sauce.check_username_password()
+# test_sauce.check_username_password()
 # test_sauce.login_sauce()
-# test_sauce.succes_login()
+test_sauce.succes_login()
 sleep(100)
