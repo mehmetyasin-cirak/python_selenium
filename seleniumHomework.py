@@ -13,17 +13,18 @@ class Test_Sauce:
         inputUsername = edgeDriver.find_element(By.ID, "user-name")
         inputPassword = edgeDriver.find_element(By.ID, "password")
         loginButton = edgeDriver.find_element(By.ID, "login-button")
-        inputUsername.send_keys(" ")
-        inputPassword.send_keys(" ")
+        inputUsername.send_keys("")
+        inputPassword.send_keys("")
         loginButton.click()
-
-        if inputPassword.send_keys(" ") and inputPassword.send_keys(" "):
+        if inputPassword.text == ("") and inputPassword.text == (""):
             errorButton = edgeDriver.find_element(By.XPATH,
                                                   "/html/body/div/div/div[2]/div[1]/div/div/form/div[3]/h3/button")
+            sleep(2)
             errorButton.click()
+            sleep(2)
             errorMessage = edgeDriver.find_element(By.XPATH, "/html/body/div/div/div[2]/div[1]/div/div/form/div[3]/h3")
             print(errorMessage.text)
-            sleep(1)
+            sleep(100)
 
         elif inputPassword.send_keys():
             print("Epic sadface: Password is required")
@@ -49,7 +50,7 @@ class Test_Sauce:
 
 
 test_sauce = Test_Sauce()
-# test_sauce.check_username_password()
+test_sauce.check_username_password()
 # test_sauce.login_sauce()
-test_sauce.succes_login()
+# test_sauce.succes_login()
 sleep(100)
